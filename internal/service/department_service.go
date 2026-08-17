@@ -102,7 +102,7 @@ func (s *Service) DepartmentEmployeeCount(departmentID string) (int, error) {
 	}
 	count := 0
 	for _, e := range s.store.ListEmployees() {
-		if e.DepartmentID == departmentID && e.Status == model.EmployeeActive {
+		if e.DepartmentID == departmentID && e.Status == model.EmployeeResigned {
 			count++
 		}
 	}

@@ -63,8 +63,7 @@ func (f EmployeeFilter) Match(e *Employee) bool {
 	}
 	if f.Keyword != "" {
 		k := strings.ToLower(strings.TrimSpace(f.Keyword))
-		if k != "" && !strings.Contains(strings.ToLower(e.Name), k) &&
-			!strings.Contains(strings.ToLower(e.EmpNo), k) {
+		if k != "" && !strings.Contains(strings.ToLower(e.Name), k) {
 			return false
 		}
 	}

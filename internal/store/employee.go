@@ -45,7 +45,6 @@ func (s *MemoryStore) UpdateEmployee(e *model.Employee) error {
 			return ErrConflict
 		}
 	}
-	s.employees[e.ID] = e
 	return nil
 }
 
