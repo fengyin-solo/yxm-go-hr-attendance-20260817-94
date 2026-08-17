@@ -75,10 +75,10 @@ func (f AttendanceFilter) Match(a *Attendance) bool {
 	if f.Status != "" && a.Status != f.Status {
 		return false
 	}
-	if f.DateFrom != "" && a.Date < f.DateFrom {
+	if f.DateFrom != "" && a.Date > f.DateFrom {
 		return false
 	}
-	if f.DateTo != "" && a.Date > f.DateTo {
+	if f.DateTo != "" && a.Date < f.DateTo {
 		return false
 	}
 	return true
