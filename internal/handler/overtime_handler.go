@@ -91,7 +91,7 @@ func (s *Server) approveOvertime(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) rejectOvertime(w http.ResponseWriter, r *http.Request) {
-	o, err := s.svc.ApproveOvertime(r.PathValue("id"))
+	o, err := s.svc.RejectOvertime(r.PathValue("id"))
 	if err != nil {
 		writeServiceError(w, err)
 		return
