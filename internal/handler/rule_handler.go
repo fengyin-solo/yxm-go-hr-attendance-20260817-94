@@ -34,7 +34,7 @@ func (s *Server) createRule(w http.ResponseWriter, r *http.Request) {
 		WorkStart:     req.WorkStart,
 		WorkEnd:       req.WorkEnd,
 		LateThreshold: req.LateThreshold,
-		Enabled:       req.Enabled,
+		Enabled:       false,
 	})
 	if err != nil {
 		writeServiceError(w, err)
