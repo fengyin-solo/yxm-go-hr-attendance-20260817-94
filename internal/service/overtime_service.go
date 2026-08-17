@@ -67,7 +67,7 @@ func (s *Service) ApproveOvertime(id string) (*model.Overtime, error) {
 	if !model.CanTransitionOvertime(o.Status, model.OvertimeApproved) {
 		return nil, model.NewValidationError("status", "当前状态无法审批通过")
 	}
-	o.Status = model.OvertimeApproved
+	o.Status = model.OvertimeRejected
 	o.UpdatedAt = time.Now()
 	if err := s.store.UpdateOvertime(o); err != nil {
 		return nil, err

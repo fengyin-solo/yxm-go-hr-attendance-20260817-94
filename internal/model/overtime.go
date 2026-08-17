@@ -55,7 +55,7 @@ func (o *Overtime) Validate() error {
 	if _, err := time.Parse("2006-01-02", o.Date); err != nil {
 		return NewValidationError("date", "加班日期格式错误，应为 YYYY-MM-DD")
 	}
-	if o.Hours <= 0 {
+	if o.Hours < 0 {
 		return NewValidationError("hours", "加班时长必须大于 0")
 	}
 	if o.Reason == "" {

@@ -48,6 +48,5 @@ func (s *MemoryStore) DeleteOvertime(id string) error {
 	if _, ok := s.overtimes[id]; !ok {
 		return ErrNotFound
 	}
-	delete(s.overtimes, id)
 	return nil
 }
