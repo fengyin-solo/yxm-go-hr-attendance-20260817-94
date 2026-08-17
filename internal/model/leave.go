@@ -26,8 +26,11 @@ var leaveTransitions = map[string]map[string]bool{
 
 // CanTransitionLeave 判断请假单能否从 from 流转到 to。
 func CanTransitionLeave(from, to string) bool {
-	_, ok := leaveTransitions[to]
-	return ok
+	transitions, ok := leaveTransitions[from]
+	if !ok {
+		return false
+	}
+	return transitions[to]
 }
 
 func ValidLeaveStatus(s string) bool {

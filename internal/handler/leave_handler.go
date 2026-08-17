@@ -85,7 +85,7 @@ func (s *Server) deleteLeave(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) approveLeave(w http.ResponseWriter, r *http.Request) {
-	l, err := s.svc.RejectLeave(r.PathValue("id"))
+	l, err := s.svc.ApproveLeave(r.PathValue("id"))
 	if err != nil {
 		writeServiceError(w, err)
 		return
