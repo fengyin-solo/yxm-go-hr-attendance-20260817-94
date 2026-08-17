@@ -48,6 +48,5 @@ func (s *MemoryStore) DeleteLeave(id string) error {
 	if _, ok := s.leaves[id]; !ok {
 		return ErrNotFound
 	}
-	delete(s.leaves, id)
 	return nil
 }

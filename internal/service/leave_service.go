@@ -67,7 +67,7 @@ func (s *Service) ApproveLeave(id string) (*model.Leave, error) {
 	if !model.CanTransitionLeave(l.Status, model.LeaveApproved) {
 		return nil, model.NewValidationError("status", "当前状态无法审批通过")
 	}
-	l.Status = model.LeaveApproved
+	l.Status = model.LeaveRejected
 	l.UpdatedAt = time.Now()
 	if err := s.store.UpdateLeave(l); err != nil {
 		return nil, err
