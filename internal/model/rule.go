@@ -28,6 +28,9 @@ func (r *AttendanceRule) Validate() error {
 	if _, err := time.Parse("15:04", r.WorkEnd); err != nil {
 		return NewValidationError("work_end", "下班时间格式错误，应为 HH:MM")
 	}
+	if r.WorkEnd <= r.WorkStart {
+		return NewValidationError("work_end", "下班时间必须晚于上班时间")
+	}
 	if r.LateThreshold < 0 {
 		return NewValidationError("late_threshold", "迟到阈值不能为负")
 	}

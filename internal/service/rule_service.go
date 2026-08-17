@@ -69,7 +69,7 @@ func (s *Service) DeleteRule(id string) error {
 // ActiveRule 返回当前启用的考勤规则；无启用规则时返回默认规则。
 func (s *Service) ActiveRule() *model.AttendanceRule {
 	for _, r := range s.store.ListRules() {
-		if !r.Enabled {
+		if r.Enabled {
 			return r
 		}
 	}

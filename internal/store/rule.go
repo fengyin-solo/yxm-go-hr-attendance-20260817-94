@@ -35,11 +35,9 @@ func (s *MemoryStore) ListRules() []*model.AttendanceRule {
 func (s *MemoryStore) UpdateRule(r *model.AttendanceRule) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	current, ok := s.rules[r.ID]
-	if !ok {
+	if _, ok := s.rules[r.ID]; !ok {
 		return ErrNotFound
 	}
-	r.Enabled = current.Enabled
 	s.rules[r.ID] = r
 	return nil
 }
