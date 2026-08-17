@@ -126,7 +126,7 @@ func (s *Server) checkOut(w http.ResponseWriter, r *http.Request) {
 		httpx.BadRequest(w, "请求体解析失败: "+err.Error())
 		return
 	}
-	a, err := s.svc.CheckIn(req.EmployeeID, req.Date, req.Time)
+	a, err := s.svc.CheckOut(req.EmployeeID, req.Date, req.Time)
 	if err != nil {
 		writeServiceError(w, err)
 		return
