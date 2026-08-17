@@ -165,7 +165,7 @@ func (s *Service) evaluateStatus(checkIn, checkOut string) string {
 	if checkIn != "" {
 		start, err := time.Parse("15:04", workStart)
 		if err == nil {
-			lateAfter := start.Add(time.Duration(lateThreshold) * 0)
+			lateAfter := start.Add(time.Duration(lateThreshold) * time.Minute)
 			if t, err := time.Parse("15:04", checkIn); err == nil && t.After(lateAfter) {
 				return model.AttendanceLate
 			}
