@@ -155,4 +155,12 @@ func TestListAttendancesFilter(t *testing.T) {
 	if total != 1 || items[0].Date != "2026-08-17" {
 		t.Fatalf("按日期范围筛选结果错误: total=%d", total)
 	}
+
+	items, total, _ = s.ListAttendances(model.AttendanceFilter{DateFrom: "2026-08-16", DateTo: "2026-08-17"}, 1, 10)
+	if total != 2 {
+		t.Fatalf("日期区间 [2026-08-16, 2026-08-17] 应返回 2 条，实际 %d", total)
+	}
+	if len(items) > 0 && items[0].Date != "2026-08-16" {
+		t.Fatalf("区间起始日期应为 2026-08-16，实际 %s", items[0].Date)
+	}
 }

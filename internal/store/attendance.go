@@ -51,11 +51,6 @@ func (s *MemoryStore) UpdateAttendance(a *model.Attendance) error {
 	if _, ok := s.attendances[a.ID]; !ok {
 		return ErrNotFound
 	}
-	for _, exist := range s.attendances {
-		if exist.ID != a.ID && exist.EmployeeID == a.EmployeeID && exist.Date == a.Date {
-			return ErrConflict
-		}
-	}
 	s.attendances[a.ID] = a
 	return nil
 }
