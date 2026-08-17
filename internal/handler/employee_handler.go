@@ -41,7 +41,7 @@ func (s *Server) createEmployee(w http.ResponseWriter, r *http.Request) {
 		DepartmentID: req.DepartmentID,
 		Name:         req.Name,
 		EmpNo:        req.EmpNo,
-		Position:     "",
+		Position:     req.Position,
 		HireDate:     hireDate,
 		Status:       req.Status,
 	})
